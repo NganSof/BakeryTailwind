@@ -7,6 +7,9 @@ import partner4 from "../../asset/partner4.gif";
 import partner5 from "../../asset/partner5.gif";
 
 export const Footer: FC = () => {
+  const handleClickLink = () => {
+    window.open("new");
+  };
   return (
     <div className="flex flex-col bg-gray-100  sticky mt-[45%]">
       <div className="border-none max-w-7xl m-5 bg-slate-200 h-48 outline-none rounded-2xl overflow-hidden shadow-inset">
@@ -69,7 +72,7 @@ export const Footer: FC = () => {
               alt="logo"
               className="w-28 h-28 object-contain m-auto mb-1"
             />
-            <p className="mb-1 text-left pl-8">
+            <p className="mb-1 text-left pl-8 font-mono">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
               deleniti, quo amet illo incidunt rerum?
             </p>
@@ -125,31 +128,96 @@ export const Footer: FC = () => {
             </div>
           </div>
           <div className="w-[20%] flex flex-col flex-1">
-            <h2 className="font-bold shrink-0">Location</h2>
-            <div className="flex-1 mt-3 flex flex-col justify-evenly self-start w-[100%] text-left">
-              <p className="ml-28">Thủ Đức</p>
-              <p className="ml-28">Bình Thạnh</p>
-              <p className="ml-28">Bình Phước</p>
-              <p className="ml-28">Biên Hòa</p>
-              <p className="ml-28">Quận 3</p>
+            <h2 className="font-bold shrink-0 font-mono">Location</h2>
+            <div className="flex-1 mt-3 flex flex-col justify-evenly self-start w-[100%] text-left italic">
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Thủ Đức
+              </p>
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Bình Thạnh
+              </p>
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Bình Phước
+              </p>
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Biên Hòa
+              </p>
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Quận 3
+              </p>
             </div>
           </div>
           <div className="w-[20%] flex flex-col flex-1">
-            <h2 className="font-bold shrink-0">Links</h2>
-            <div className="flex-1 mt-3 flex flex-col justify-evenly self-start w-[100%] text-left">
-              <p className="ml-28">Home</p>
-              <p className="ml-28">About</p>
-              <p className="ml-28">Order</p>
-              <p className="ml-28">Menu</p>
-              <p className="ml-28">Contract</p>
+            <h2 className="font-bold shrink-0 font-mono">Links</h2>
+            <div className="flex-1 mt-3 flex flex-col justify-evenly self-start w-[100%] text-left italic">
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Home
+              </p>
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                About
+              </p>
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Order
+              </p>
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Menu
+              </p>
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Contract
+              </p>
             </div>
           </div>
           <div className="w-[20%] flex flex-col flex-1">
-            <h2 className="font-bold shrink-0">Company</h2>
-            <div className="flex-1 mt-3 flex flex-col justify-evenly self-start w-[100%] text-left">
-              <p className="ml-28">Tern & Condition</p>
-              <p className="ml-28">Privacy Policy</p>
-              <p className="ml-28">Cookie Policy</p>
+            <h2 className="font-bold shrink-0 font-mono">Company</h2>
+            <div className="flex-1 mt-3 flex flex-col justify-evenly self-start w-[100%] text-left italic">
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Tern & Condition
+              </p>
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Privacy Policy
+              </p>
+              <p
+                onClick={handleClickLink}
+                className="ml-28 hover:decoration-amber-600 hover:underline-offset-8 hover:underline hover:underline-translate-x-3 cursor-pointer"
+              >
+                Cookie Policy
+              </p>
             </div>
           </div>
         </div>
