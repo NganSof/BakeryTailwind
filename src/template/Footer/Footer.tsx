@@ -11,7 +11,7 @@ export const Footer: FC = () => {
     window.open("new");
   };
   return (
-    <div className="flex flex-col bg-gray-100  sticky mt-[45%]">
+    <div className="flex flex-col bg-gray-100 sticky mt-[5%]">
       <div className="border-none max-w-7xl m-5 bg-slate-200 h-48 outline-none rounded-2xl overflow-hidden shadow-inset">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d2412779.816630198!2d103.92312432664896!3d9.579529377809665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x31752955992c954d%3A0x32e5b358c834448f!2zS2jDs2kgcm9vZnRvcCwgMS0zIFBow7ogTeG7uSwgUGjGsOG7nW5nIDIyLCBCw6xuaCBUaOG6oW5oLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!3m2!1d10.7907675!2d106.7147803!5e0!3m2!1svi!2s!4v1682329121432!5m2!1svi!2s"

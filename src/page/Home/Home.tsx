@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useRef } from "react";
 import {
   HiBeaker,
   HiBell,
@@ -16,9 +16,18 @@ import { SlideFood } from "../../component/SlideFood";
 export const Home: FC = () => {
   const navigate = useNavigate();
   const handleNavOrder = () => {
-    navigate("/order");
+    navigate("/menu");
   };
-  // Có các mục nhỏ menu,order,about us,gift xong làm croll cho thanh kéo
+  const scrOrder = useRef<null | HTMLDivElement>(null);
+  const scrAbout = useRef<null | HTMLDivElement>(null);
+
+  const handlScrOrder = () => {
+    scrOrder?.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handlScrAbout = () => {
+    scrAbout?.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <Fragment>
       <section id="about" className="relative text-white mb-5">
@@ -40,19 +49,26 @@ export const Home: FC = () => {
         <div className="text-black absolute top-32 right-52 w-64 flex justify-around items-center py-2 rounded-lg">
           <button className="flex flex-row items-center bg-slate-100 border-2 border-double border-orange-500 p-2 rounded-xl shadow-2xl hover:shadow-inset">
             <HiOutlineMap className="shrink-0 mr-2" />
-            <p className="flex-1 font-serif">Our menu</p>
+            <p className="flex-1 font-serif" onClick={handlScrOrder}>
+              Our menu
+            </p>
           </button>
           <button className="flex flex-row items-center bg-slate-100 border-2 border-double border-orange-500 p-2 rounded-xl shadow-2xl hover:shadow-inset">
             <HiOutlineGift className="shrink-0 mr-2" />
-            <p className="flex-1 font-serif"> About Us</p>
+            <p className="flex-1 font-serif" onClick={handlScrAbout}>
+              About Us
+            </p>
           </button>
         </div>
       </section>
       <section
         id="menu"
+        ref={scrOrder}
         className="max-w-7xl mx-20 font-serif text-center bg-slate-50"
       >
-        <h1 className="font-bold from-neutral-800 text-4xl">Our Menu</h1>
+        <h1 className="bg-clip-text bg-gradient-to-b from-indigo-500 to-purple-600 text-transparent font-bold text-4xl">
+          Our Menu
+        </h1>
         <h2 className="my-2 text-orange-600 font-bold tracking-widest">
           Eat Fresh & Healthy
         </h2>
@@ -89,17 +105,41 @@ export const Home: FC = () => {
         <CardFood />
         <button
           onClick={handleNavOrder}
-          className="mx-auto mb-1 flex flex-row items-center bg-slate-100 border-2 border-double border-orange-500 p-2 rounded-xl shadow-2xl hover:shadow-inset"
+          className="mx-auto mb-4 inline-flex flex-row items-center bg-slate-100 border-2 border-double border-orange-500 p-2 rounded-xl shadow-2xl hover:shadow-inset"
         >
           <HiBookOpen className="shrink-0 mr-2" />
           <p className="flex-1 font-serif">More</p>
         </button>
       </section>
-      <section id="order" className="max-w-7xl mx-20 my-9">
-        <h2>Order Now</h2>
+      <section id="order" className="max-w-7xl mx-20 my-12">
+        <h2 className="mb-5 text-center font-serif bg-clip-text bg-gradient-to-b from-indigo-500 to-purple-600 text-transparent font-bold text-4xl">
+          Order Now
+        </h2>
         <SlideFood />
       </section>
-      <section id="girf"></section>
+      <section
+        id="girf"
+        ref={scrAbout}
+        className="text-center bg-no-repeat bg-cover bg-gift-img h-96 max-w-7xl mx-20 my-12 relative"
+      >
+        <h2 className="font-bold italic font-serif bg-clip-text bg-gradient-to-b from-indigo-500 to-purple-600 text-transparent text-4xl my-3 animate-bounce absolute top-64 left-40">
+          Lucky coupons
+        </h2>
+        <ul className="ml-72 mt-5 text-left text-red-800 absolute top-10 -left-8">
+          <li className="italic font-mono tracking-wider cursor-pointer pb-2 hover:text-red-700 hover:text-xl">
+            Lucky coupons by month
+          </li>
+          <li className="italic font-mono tracking-wider cursor-pointer pb-2 hover:text-red-700 hover:text-xl">
+            Free delivery within city area
+          </li>
+          <li className="italic font-mono tracking-wider cursor-pointer pb-2 hover:text-red-700 hover:text-xl">
+            Golden hour to receive free new cakes
+          </li>
+          <li className="italic font-mono tracking-wider cursor-pointer pb-2 hover:text-red-700 hover:text-xl">
+            Earn points to receive gifts with every bill
+          </li>
+        </ul>
+      </section>
     </Fragment>
   );
 };

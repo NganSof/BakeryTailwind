@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import bakeryAPI from "../service/BakeryAPI";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    bakerys: bakeryAPI,
+  },
 });
-
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}

@@ -7,6 +7,9 @@ module.exports = {
         inner: "inset 0 3px 7px 0 rgb(0 0 0 / 0.02)",
         inset: "inset 10px 7px 8px 0 rgb(159 153 153)",
       },
+      backgroundImage: {
+        "gift-img": "url('./asset/gift.jpg')",
+      },
     },
   },
   plugins: [],

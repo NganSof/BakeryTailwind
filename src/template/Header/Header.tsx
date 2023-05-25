@@ -1,14 +1,28 @@
 import { FC } from "react";
 import logo from "../../asset/logo.gif";
 import { useNavigate } from "react-router-dom";
+import { usePostInfoUserMutation } from "../../service/UserAPI";
+import { UserSignUp } from "../../type/UserLogin";
 
 export const Header: FC = () => {
+  const usSignUp: UserSignUp = {
+    fullName: "User 1",
+    email: "user1@gmail.com",
+    phone: "012345678",
+    password: "12345678",
+    address: "458 p.Linh Tây, Tp.Thủ Đức, Tp.Hồ Chí Minh",
+  };
+  const [userSignUpProd, userSignUpProdResult] = usePostInfoUserMutation();
+  const handleuserSignUpProd = async () => {
+    await userSignUpProd(usSignUp).unwrap;
+  };
   const navigate = useNavigate();
   return (
     <header className="@apply:bg:#F3F3F5 font-mono shadow-md flex h-24 justify-around items-center">
       <div
+        onClick={() => navigate("")}
         id="logoHeader"
-        className="flex flex-row justify-evenly items-center"
+        className="flex flex-row justify-evenly items-center cursor-pointer"
       >
         <img src={logo} alt="logo" className="w-14 h-14 shrink-0" />
         <h4 className="flex-1 ml-2 italic text-2xl">Bakery</h4>
@@ -26,16 +40,6 @@ export const Header: FC = () => {
             onClick={() => navigate("/gift")}
           >
             Gift
-          </li>
-          <li
-            className="mr-4 hover:border-b-indigo-500/50 cursor-pointer border-solid border-black hover:border-b-2 hover:text-indigo-500/50"
-            onClick={() => navigate("/order")}
-          >
-            Order
-          </li>
-          <li className="mr-4 hover:border-b-indigo-500/50 cursor-pointer border-solid border-black hover:border-b-2 hover:text-indigo-500/50">
-            {/* croll xuống mục aboutus */}
-            About Us
           </li>
         </ul>
         <input
@@ -71,20 +75,23 @@ export const Header: FC = () => {
           </svg>
         </button>
         <button
-          onClick={() => navigate("/login")}
+          onClick={() => {
+            navigate("/login");
+            handleuserSignUpProd();
+          }}
           className="rounded-full shadow-xl p-2 mr-5 bg-slate-5 hover:shadow-slate-400 hover:shadow-inner"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
             className="w-6 h-6"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
             />
           </svg>
