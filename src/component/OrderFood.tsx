@@ -1,14 +1,8 @@
 import { FC, Fragment } from "react";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { infoBakey } from "../type/Bakery";
-import { createBakery } from "../service/BakeryAPI";
-import { useDispatch } from "react-redux";
 
 export const OrderFood: FC<infoBakey> = (props) => {
-  const dispatch = useDispatch();
-  // test send payload
-  // const data = dispatch(createBakery({ ...props }));
-  // console.log("data", data);
   return (
     <Fragment>
       <div className="flex-row cursor-cell rounded-full p-5 flex justify-between items-center shadow-2xl mx-5 my-10 border-x-red-300 border-y-sky-500 border-4">
