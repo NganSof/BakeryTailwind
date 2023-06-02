@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import bakeryAPI from "../service/BakeryAPI";
+import userAPI from "../service/UserAPI";
 
 export const store = configureStore({
   reducer: {
     bakerys: bakeryAPI,
+    user: userAPI,
   },
 });
 // Infer the `RootState` and `AppDispatch` types from the store itself

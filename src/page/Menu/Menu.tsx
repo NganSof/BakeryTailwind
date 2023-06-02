@@ -4,16 +4,23 @@ import { CakePastries } from "../../component/CakePastries";
 import { Sandwich } from "../../component/Sandwich";
 import { Burger } from "../../component/Burger";
 import { Pizza } from "../../component/Pizza";
-import { bakeryTypeDate } from "../../mock/bakery";
 import { infoBakey } from "../../type/Bakery";
+import { useSelector } from "react-redux";
+import { selectBakery } from "../../service/BakeryAPI";
 
 export const Menu: FC = () => {
   initTE({ Tab });
   const [id, setId] = useState<string>("cakes");
-  let renderContent: JSX.Element = <CakePastries item={bakeryTypeDate} />;
-  let allItemBakery: infoBakey[] = [];
+  let { listBake } = useSelector(selectBakery);
+  const [listBa, setListBa] = useState<infoBakey[]>(listBake);
 
-  bakeryTypeDate?.map((itemBakety: infoBakey) => {
+  useEffect(() => {
+    setListBa(listBake);
+  }, [listBake]);
+
+  let renderContent: JSX.Element = <></>;
+  let allItemBakery: infoBakey[] = [];
+  listBa?.map((itemBakety: infoBakey) => {
     if (itemBakety.type === id) {
       allItemBakery.push(itemBakety);
       switch (itemBakety.type) {
@@ -43,7 +50,7 @@ export const Menu: FC = () => {
     <div className="flex flex-row justify-between">
       <ul className="flex list-none flex-col flex-wrap w-[20%] justify-evenly text-xl italic font-bold">
         <li
-          className="p-2 flex text-center hover:shadow-lg hover:shadow-orange-700 w-[100%] decoration-wavy decoration-orange-500 underline"
+          className="p-2 flex text-center hover:shadow-lg hover:shadow-orange-700 w-[100%] decoration-wavy decoration-orange-500 underline cursor-pointer"
           onClick={() => {
             changeID("cakes");
           }}
@@ -51,7 +58,7 @@ export const Menu: FC = () => {
           Cakes & Pastries
         </li>
         <li
-          className="p-2 flex text-center hover:shadow-lg hover:shadow-orange-700 w-[100%] decoration-wavy decoration-orange-500 underline"
+          className="p-2 flex text-center hover:shadow-lg hover:shadow-orange-700 w-[100%] decoration-wavy decoration-orange-500 underline cursor-pointer"
           onClick={() => {
             changeID("sandwich");
           }}
@@ -59,7 +66,7 @@ export const Menu: FC = () => {
           Sandwich
         </li>
         <li
-          className="p-2 flex text-center hover:shadow-lg hover:shadow-orange-700 w-[100%] decoration-wavy decoration-orange-500 underline"
+          className="p-2 flex text-center hover:shadow-lg hover:shadow-orange-700 w-[100%] decoration-wavy decoration-orange-500 underline cursor-pointer"
           onClick={() => {
             changeID("burger");
           }}
@@ -67,7 +74,7 @@ export const Menu: FC = () => {
           Burger
         </li>
         <li
-          className="p-2 flex text-center hover:shadow-lg hover:shadow-orange-700 w-[100%] decoration-wavy decoration-orange-500 underline"
+          className="p-2 flex text-center hover:shadow-lg hover:shadow-orange-700 w-[100%] decoration-wavy decoration-orange-500 underline cursor-pointer"
           onClick={() => {
             changeID("pizza");
           }}

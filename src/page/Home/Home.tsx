@@ -1,4 +1,4 @@
-import { FC, Fragment, useRef } from "react";
+import { FC, Fragment, useEffect, useRef, useState } from "react";
 import {
   HiBeaker,
   HiBell,
@@ -12,21 +12,67 @@ import foodBG from "../../asset/foodBG.jpg";
 import { CardFood } from "../../component/CardFood";
 import { useNavigate } from "react-router-dom";
 import { SlideFood } from "../../component/SlideFood";
+import { infoBakey } from "../../type/Bakery";
+import { createBakery, selectBakery } from "../../service/BakeryAPI";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Home: FC = () => {
   const navigate = useNavigate();
   const handleNavOrder = () => {
     navigate("/menu");
+    dispatch(
+      createBakery({
+        type: "pizza",
+        name: "Hot Pizza",
+        price: 520000,
+        quantity: 7,
+        description:
+          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam accusamus dolore quasi incidunt inventore quos quibusdam officia distinctio eligendi natus architecto at provident eveniet, ea recusandae autem ut consequatur veritatis rem officiis quidem culpa alias illum? Doloribus porro molestiae rerum repudiandae ad itaque dignissimos, fuga sequi. Eos voluptates quam amet voluptatibus suscipit. Est magni fugiat earum corporis molestias ipsam odit!",
+      })
+    );
   };
   const scrOrder = useRef<null | HTMLDivElement>(null);
   const scrAbout = useRef<null | HTMLDivElement>(null);
-
+  const [idChange, setIdChange] = useState<string>("");
+  let { listBake } = useSelector(selectBakery);
+  const dispatch = useDispatch();
   const handlScrOrder = () => {
     scrOrder?.current?.scrollIntoView({ behavior: "smooth" });
   };
   const handlScrAbout = () => {
     scrAbout?.current?.scrollIntoView({ behavior: "smooth" });
   };
+  const [listBa, setListBa] = useState<infoBakey[]>(listBake);
+  useEffect(() => {
+    setListBa(listBake);
+  }, [listBake]);
+
+  let allItemBakery: infoBakey[] = [];
+  let renderContent: JSX.Element = <CardFood food={listBa.slice(0, 3)} />;
+  const handleShow = (id: string) => {
+    return listBa?.map((itemBakety: infoBakey) => {
+      if (itemBakety.type === id) {
+        allItemBakery.push(itemBakety);
+        switch (itemBakety.type) {
+          case "cakes":
+            renderContent = <CardFood food={allItemBakery} />;
+            break;
+          case "burger":
+            renderContent = <CardFood food={allItemBakery} />;
+            break;
+          case "sandwich":
+            renderContent = <CardFood food={allItemBakery} />;
+            break;
+          case "pizza":
+            renderContent = <CardFood food={allItemBakery} />;
+            break;
+          default:
+            break;
+        }
+      }
+    });
+  };
+  handleShow(idChange);
 
   return (
     <Fragment>
@@ -74,35 +120,43 @@ export const Home: FC = () => {
         </h2>
         <div className="flex flex-row mx-10 justify-evenly my-4 shadow-inset p-3 rounded-md">
           <div
-            id="itemMenu"
+            onClick={() => {
+              setIdChange("cakes");
+            }}
             className="flex justify-between items-center decoration-wavy decoration-orange-500 underline hover:text-orange-500 hover:no-underline hover:cursor-pointer"
           >
             <HiBell />
             <p className="ml-2">Cakes & Pastries</p>
           </div>
           <div
-            id="itemMenu"
+            onClick={() => {
+              setIdChange("sandwich");
+            }}
             className="flex justify-between items-center decoration-wavy decoration-orange-500 underline hover:text-orange-500 hover:no-underline hover:cursor-pointer"
           >
             <HiBeaker />
             <p className="ml-2">Sandwich</p>
           </div>
           <div
-            id="itemMenu"
+            onClick={() => {
+              setIdChange("burger");
+            }}
             className="flex justify-between items-center decoration-wavy decoration-orange-500 underline hover:text-orange-500 hover:no-underline hover:cursor-pointer"
           >
             <HiHeart />
             <p className="ml-2">Burger</p>
           </div>
           <div
-            id="itemMenu"
+            onClick={() => {
+              setIdChange("pizza");
+            }}
             className="flex justify-between items-center decoration-wavy decoration-orange-500 underline hover:text-orange-500 hover:no-underline hover:cursor-pointer"
           >
             <HiSparkles />
             <p className="ml-2">Pizza</p>
           </div>
         </div>
-        <CardFood />
+        {renderContent}
         <button
           onClick={handleNavOrder}
           className="mx-auto mb-4 inline-flex flex-row items-center bg-slate-100 border-2 border-double border-orange-500 p-2 rounded-xl shadow-2xl hover:shadow-inset"

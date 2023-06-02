@@ -1,23 +1,21 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { UserLogin, UserSignUp } from "../type/UserLogin";
+import { createSlice, current } from "@reduxjs/toolkit";
+import { UserLogin } from "../type/UserLogin";
+import { infoLoginUser } from "../mock/user";
 
-export const userApi = createApi({
-  reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://freeapi.code4func.com/api/v1",
-  }),
-  endpoints: (builder) => ({
-    postInfoUser: builder.mutation<UserSignUp, {}>({
-      query: (params) => {
-        // console.log(params);
-        return {
-          method: "POST",
-          url: `/user/sign-up`,
-          params,
-        };
-      },
-    }),
-  }),
+let initialState = { userInfo: infoLoginUser as UserLogin };
+// localStorage.setItem("userLogin", JSON.stringify(infoLoginUser));
+const userAPI = createSlice({
+  name: "user",
+  initialState,
+  reducers: {
+    loginUser(state, action) {
+      // localStorage.removeItem("userLogin");
+      console.log("stateUser", current(state.userInfo));
+      localStorage.setItem("userLogin", JSON.stringify(action.payload));
+    },
+  },
 });
-export const { usePostInfoUserMutation } = userApi;
-export const { endpoints, reducerPath, reducer, middleware } = userApi;
+const { actions } = userAPI;
+export const selectUser = (state: any) => state.user;
+export const { loginUser } = actions;
+export default userAPI.reducer;

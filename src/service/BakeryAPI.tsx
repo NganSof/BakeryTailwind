@@ -1,24 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { infoBakey } from "../type/Bakery";
+import { bakeryTypeDate } from "../mock/bakery";
 
-const initialState = {
-  type: "",
-  name: "",
-  price: 0,
-  quantity: 0,
-  description: "",
-} as infoBakey;
-
+let initialState = { listBake: bakeryTypeDate as infoBakey[] };
 const bakeryAPI = createSlice({
   name: "bakerys",
   initialState,
   reducers: {
-    createBakery(state, action) {},
-    updateBakery(state, action) {},
-    deleteBakery(state, action) {},
+    getBakery(state, action) {
+      return state;
+    },
+    createBakery(state, action) {
+      let indBaNew: number = current(state.listBake)?.findIndex(
+        (item: infoBakey) => {
+          if (item.name === action.payload.name) {
+            return 1;
+          }
+        }
+      );
+      if (indBaNew === -1) {
+        state.listBake.push(action.payload);
+        initialState = current(state);
+      }
+      return state;
+    },
   },
 });
-
-const { actions, reducer } = bakeryAPI;
-export const { createBakery, updateBakery, deleteBakery } = actions;
-export default reducer;
+const { actions } = bakeryAPI;
+export const selectBakery = (state: any) => state.bakerys;
+export const { getBakery, createBakery } = actions;
+export default bakeryAPI.reducer;

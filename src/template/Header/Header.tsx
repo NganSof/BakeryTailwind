@@ -1,21 +1,8 @@
 import { FC } from "react";
 import logo from "../../asset/logo.gif";
 import { useNavigate } from "react-router-dom";
-import { usePostInfoUserMutation } from "../../service/UserAPI";
-import { UserSignUp } from "../../type/UserLogin";
 
 export const Header: FC = () => {
-  const usSignUp: UserSignUp = {
-    fullName: "User 1",
-    email: "user1@gmail.com",
-    phone: "012345678",
-    password: "12345678",
-    address: "458 p.Linh Tây, Tp.Thủ Đức, Tp.Hồ Chí Minh",
-  };
-  const [userSignUpProd, userSignUpProdResult] = usePostInfoUserMutation();
-  const handleuserSignUpProd = async () => {
-    await userSignUpProd(usSignUp).unwrap;
-  };
   const navigate = useNavigate();
   return (
     <header className="@apply:bg:#F3F3F5 font-mono shadow-md flex h-24 justify-around items-center">
@@ -77,7 +64,6 @@ export const Header: FC = () => {
         <button
           onClick={() => {
             navigate("/login");
-            handleuserSignUpProd();
           }}
           className="rounded-full shadow-xl p-2 mr-5 bg-slate-5 hover:shadow-slate-400 hover:shadow-inner"
         >

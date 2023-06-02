@@ -1,5 +1,5 @@
 export interface UserLogin {
-  email: string | null;
+  fullName: string | null;
   password: string | number;
 }
 export interface User {

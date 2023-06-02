@@ -1,10 +1,17 @@
 import { FC, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, selectUser } from "../../service/UserAPI";
+import { useNavigate } from "react-router-dom";
 
 export const Login: FC = () => {
   const [showSignIn, setShowSignIn] = useState<boolean>(true);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const { ...payload } = useSelector(selectUser);
+  console.log("payload", payload.userInfo);
   const schema = Yup.object().shape({
     fullName: Yup.string()
       .required("Username is required")
@@ -20,7 +27,6 @@ export const Login: FC = () => {
       .min(10, "Address must have min 10 characters")
       .max(30, "Address have max 30 characters"),
   });
-
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -29,8 +35,7 @@ export const Login: FC = () => {
       phone: "",
       address: "",
     },
-
-    onSubmit: (values, eve: any) => {
+    onSubmit: (eve: any) => {
       eve.preventDefault();
     },
     validationSchema: schema,
@@ -38,16 +43,34 @@ export const Login: FC = () => {
   });
 
   const handleSubmit = () => {
-    setShowSignIn(false);
-    formik.values = formik.initialValues;
+    // Chuyển qua đăng ký
+    // setShowSignIn(false);
+    // formik.values = formik.initialValues;
+    var body = {
+      fullName: formik.values.fullName,
+      password: formik.values.password,
+    };
+    if (body.fullName === "" && body.password === "") {
+      dispatch(loginUser(payload.userInfo));
+      navigate("/menu", { replace: true });
+    } else {
+      dispatch(loginUser(body));
+      window.history.back();
+    }
+    return;
   };
+
   return (
     <div className="my-32">
       <div className="flex flex-col m-auto max-w-5xl">
         {!showSignIn ? (
           <form className="flex bg-transparent flex-col w-80 text-center m-auto my-14">
             <input
-              value={formik.values.fullName}
+              value={
+                payload.userInfo
+                  ? payload.userInfo.fullName
+                  : formik.values.fullName
+              }
               autoFocus
               type="text"
               name="fullName"
@@ -57,7 +80,7 @@ export const Login: FC = () => {
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2 mb-5"
             />
             {formik.errors.fullName && (
-              <p className="text-red-800">{formik.errors.fullName}</p>
+              <div className="text-red-800">{formik.errors.fullName}</div>
             )}
             <input
               value={formik.values.email}
@@ -69,7 +92,7 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2 mb-5"
             />
-            <p className="text-red-800">{formik.errors.email}</p>
+            <div className="text-red-800">{formik.errors.email}</div>
             <input
               value={formik.values.phone}
               autoFocus
@@ -80,7 +103,7 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2 mb-5"
             />
-            <p className="text-red-800">{formik.errors.phone}</p>
+            <div className="text-red-800">{formik.errors.phone}</div>
             <input
               value={formik.values.address}
               autoFocus
@@ -91,9 +114,13 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2 mb-5"
             />
-            <p className="text-red-800">{formik.errors.address}</p>
+            <div className="text-red-800">{formik.errors.address}</div>
             <input
-              value={formik.values.password}
+              value={
+                payload.userInfo
+                  ? payload.userInfo.password
+                  : formik.values.password
+              }
               autoFocus
               autoComplete="off"
               type="password"
@@ -103,7 +130,7 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2"
             />
-            <p className="text-red-800">{formik.errors.password}</p>
+            <div className="text-red-800">{formik.errors.password}</div>
             <div className=" m-auto my-6">
               <button
                 type="submit"
@@ -120,30 +147,38 @@ export const Login: FC = () => {
           >
             <input
               value={formik.values.fullName}
-              autoFocus
+              // autoFocus
               type="text"
               name="fullName"
-              placeholder="Full name"
+              placeholder={
+                payload.userInfo
+                  ? payload.userInfo.fullName
+                  : formik.values.fullName
+              }
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2 mb-5"
             />
-            {formik.errors.fullName && (
-              <p className="text-red-800">{formik.errors.fullName}</p>
+            {formik.errors.fullName && formik.touched.fullName && (
+              <div className="text-red-800">{formik.errors.fullName}</div>
             )}
             <input
               value={formik.values.password}
-              autoFocus
+              // autoFocus
               autoComplete="off"
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder={
+                payload.userInfo
+                  ? payload.userInfo.password
+                  : formik.values.password
+              }
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2"
             />
-            {formik.errors.password && (
-              <p className="text-red-800">{formik.errors.password}</p>
+            {formik.errors.password && formik.touched.password && (
+              <div className="text-red-800">{formik.errors.password}</div>
             )}
             <div className=" m-auto my-6">
               <button

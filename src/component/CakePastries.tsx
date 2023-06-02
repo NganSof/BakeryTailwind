@@ -11,9 +11,6 @@ export const CakePastries: FC<{ item: infoBakey[] }> = ({ item }) => {
 
   return (
     <div className="flex flex-wrap justify-around items-center">
-      {/* {item?.map((item: any) => {
-        return <Bakery key={item.name} />;
-      })} */}
       {handleShowCakes(item)}
     </div>
   );
