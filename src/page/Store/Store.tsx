@@ -1,6 +1,79 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleStore,
+  pushStore,
+  selectStore,
+  totalStore,
+} from "../../service/StoreAPI";
+import { infoBakey } from "../../type/Bakery";
+import currency from "currency.js";
+import { useNavigate } from "react-router-dom";
 
 export const Store: FC = () => {
+  const { listStore, total } = useSelector(selectStore);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [Stores, setstores] = useState<infoBakey[]>(listStore);
+
+  let valMoney = (itemNum: number) => {
+    return currency(itemNum || 0, {
+      symbol: " ",
+      separator: ".",
+    }).format();
+  };
+
+  const renderItemStore = () => {
+    return Stores?.map((itemStore, index) => {
+      return (
+        <tr
+          key={itemStore.name}
+          className="cursor-pointer border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600"
+        >
+          <td className="whitespace-nowrap px-6 py-4 font-medium">
+            {index + 1}
+          </td>
+          <td className="whitespace-nowrap px-6 py-4">{itemStore.name}</td>
+          <td className="whitespace-nowrap px-6 py-4">{itemStore.price}</td>
+          <td className="whitespace-nowrap px-6 py-4">
+            <button
+              className={
+                itemStore.quantity === 0
+                  ? "border-2 bg-red-500 my-0 mx-auto pb-9 pt-1 text-xl rounded-lg w-6 h-9 cursor-not-allowed"
+                  : "border-2 bg-red-700 text-white text-bold text-xl rounded-lg w-6 h-9 inline-block my-0 mx-auto pb-9 pt-1 cursor-pointer"
+              }
+              onClick={() => {
+                dispatch(pushStore(itemStore));
+                dispatch(totalStore());
+              }}
+            >
+              +
+            </button>
+            <span className="inline mx-2 font-serif">
+              {itemStore.quanChoice}
+            </span>
+            <button
+              className="border-2 bg-blue-700 text-white text-bold text-xl rounded-lg w-6 h-9 inline-block my-0 mx-auto pb-9 pt-1 cursor-pointer"
+              onClick={() => {
+                dispatch(deleStore(itemStore));
+                dispatch(totalStore());
+              }}
+            >
+              -
+            </button>
+          </td>
+          <td className="whitespace-nowrap px-6 py-4 text-red-600 font-serif">
+            {valMoney(itemStore.sum ? itemStore.sum : 0)}
+          </td>
+        </tr>
+      );
+    });
+  };
+
+  useEffect(() => {
+    setstores(listStore);
+  }, [listStore]);
+
   return (
     <Fragment>
       <div className="flex flex-col">
@@ -25,48 +98,21 @@ export const Store: FC = () => {
                     <th scope="col" className="px-6 py-4"></th>
                   </tr>
                 </thead>
-                <tbody className="relative">
-                  <tr className="cursor-pointer border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                    <td className="whitespace-nowrap px-6 py-4 font-medium">
-                      1
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">Mark</td>
-                    <td className="whitespace-nowrap px-6 py-4">Otto</td>
-                    <td className="whitespace-nowrap px-6 py-4">@mdo</td>
-                    <td className="whitespace-nowrap px-6 py-4">@10520</td>
-                  </tr>
-                  <tr className="cursor-pointer border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                    <td className="whitespace-nowrap px-6 py-4 font-medium">
-                      2
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">Jacob</td>
-                    <td className="whitespace-nowrap px-6 py-4">Thornton</td>
-                    <td className="whitespace-nowrap px-6 py-4">@fat</td>
-                    <td className="whitespace-nowrap px-6 py-4"> </td>
-                  </tr>
-                  <tr className="cursor-pointer border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                    <td className="whitespace-nowrap px-6 py-4 font-medium">
-                      3
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">Larry</td>
-                    <td className="whitespace-nowrap px-6 py-4">Wild</td>
-                    <td className="whitespace-nowrap px-6 py-4"> </td>
-                    <td className="whitespace-nowrap px-6 py-4">@twitter</td>
-                  </tr>
-                  <tr className="cursor-pointer border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                    <td className="whitespace-nowrap px-6 py-4 font-medium">
-                      4
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">Larry</td>
-                    <td className="whitespace-nowrap px-6 py-4">Wild</td>
-                    <td className="whitespace-nowrap px-6 py-4"> </td>
-                    <td className="whitespace-nowrap px-6 py-4">@twitter</td>
-                  </tr>
-                </tbody>
+                <tbody className="relative">{renderItemStore()}</tbody>
                 <tfoot className="h-10">
-                  <tr className="text-right absolute top-auto left-[1150px] mt-6">
+                  <tr className="text-right absolute top-auto left-[250px] mt-6">
                     <td className="text-red-800 font-bold text-2xl">
-                      Total : $0
+                      Total : $ {valMoney(total)}
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          navigate("/pay");
+                        }}
+                        className="text-red-800 font-bold text-2xl ml-10 bg-gradient-to-b from-indigo-300 to-purple-400 p-2 rounded-xl shadow-2xl hover:shadow-inset font-serif hover:bg-clip-text hover:bg-gradient-to-b from-indigo-500 to-purple-600 hover:text-transparent"
+                      >
+                        Pay the bill
+                      </button>
                     </td>
                   </tr>
                 </tfoot>

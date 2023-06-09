@@ -26,6 +26,7 @@ export const SlideFood: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
         </div>
         <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
@@ -35,6 +36,7 @@ export const SlideFood: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
         </div>
         <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
@@ -44,6 +46,7 @@ export const SlideFood: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
         </div>
         <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
@@ -53,6 +56,7 @@ export const SlideFood: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
         </div>
         <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
@@ -62,6 +66,7 @@ export const SlideFood: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
         </div>
       </Slider>

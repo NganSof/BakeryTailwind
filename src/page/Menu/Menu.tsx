@@ -7,20 +7,35 @@ import { Pizza } from "../../component/Pizza";
 import { infoBakey } from "../../type/Bakery";
 import { useSelector } from "react-redux";
 import { selectBakery } from "../../service/BakeryAPI";
+import { selectStore } from "../../service/StoreAPI";
 
 export const Menu: FC = () => {
   initTE({ Tab });
   const [id, setId] = useState<string>("cakes");
   let { listBake } = useSelector(selectBakery);
+  let { listStore } = useSelector(selectStore);
   const [listBa, setListBa] = useState<infoBakey[]>(listBake);
 
   useEffect(() => {
+    let dm = [...listBake];
+    listStore?.map((itDm: infoBakey) => {
+      dm?.map((stName: infoBakey, ind: number) => {
+        if (stName.name === itDm.name) {
+          dm.splice(ind, 1);
+          dm.push(itDm);
+        }
+        return dm;
+      });
+
+      return dm;
+    });
+    listBake = dm;
     setListBa(listBake);
-  }, [listBake]);
+  }, [listBake, listStore]);
 
   let renderContent: JSX.Element = <></>;
   let allItemBakery: infoBakey[] = [];
-  listBa?.map((itemBakety: infoBakey) => {
+  listBa?.forEach((itemBakety: infoBakey) => {
     if (itemBakety.type === id) {
       allItemBakery.push(itemBakety);
       switch (itemBakety.type) {

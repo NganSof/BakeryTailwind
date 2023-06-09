@@ -7,17 +7,14 @@ const bakeryAPI = createSlice({
   name: "bakerys",
   initialState,
   reducers: {
-    getBakery(state, action) {
+    getBakery(state) {
       return state;
     },
     createBakery(state, action) {
       let indBaNew: number = current(state.listBake)?.findIndex(
-        (item: infoBakey) => {
-          if (item.name === action.payload.name) {
-            return 1;
-          }
-        }
+        (item: infoBakey) => item.name === action.payload.name
       );
+
       if (indBaNew === -1) {
         state.listBake.push(action.payload);
         initialState = current(state);

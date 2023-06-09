@@ -24,6 +24,7 @@ export const Gift: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
           <OrderFood
             name="bakery 2"
@@ -31,6 +32,7 @@ export const Gift: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
           <OrderFood
             name="bakery 3"
@@ -38,6 +40,7 @@ export const Gift: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
           <OrderFood
             name="bakery 4"
@@ -45,6 +48,7 @@ export const Gift: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
           <OrderFood
             name="bakery 5"
@@ -52,6 +56,7 @@ export const Gift: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
           <OrderFood
             name="bakery 6"
@@ -59,6 +64,7 @@ export const Gift: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
           <OrderFood
             name="bakery 7"
@@ -66,6 +72,7 @@ export const Gift: FC = () => {
             description="lorem10"
             quantity={12}
             price={25000}
+            quanChoice={0}
           />
         </div>
       </section>
