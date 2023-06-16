@@ -1,0 +1,46 @@
+#process {
+    position: relative;
+    height: 10px;
+    width: 100%;
+    border: 10px solid #f4a261;
+    border-radius: 15px;
+}
+
+#chilPro {
+    position: absolute;
+    top: -5px;
+    background-color: #ffffff;
+    width: 0px;
+    height: 10px;
+    border-radius: 15px;
+    animation: progres 10s ease-in-out;
+}
+
+@keyframes progres {
+    0% {
+        width: 0%;
+    }
+
+    25% {
+        width: 50%;
+    }
+
+    50% {
+        width: 75%;
+    }
+
+    75% {
+        width: 85%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+input {
+    outline: none;
+    border: 2px solid blueviolet;
+    border-radius: 15px;
+    padding: 2px;
+}

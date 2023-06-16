@@ -1,5 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { infoBakey } from "../type/Bakery";
+import { stat } from "fs/promises";
 
 let initialState = {
   listStore: [] as infoBakey[],
@@ -55,9 +56,16 @@ const storeAPI = createSlice({
         }
       });
     },
+    clearStore(state) {
+      // lưu đơn hàng đã mua
+      localStorage.setItem("listStore", JSON.stringify(state.listStore));
+      state.total = 0;
+      state.listStore = [];
+      return state;
+    },
   },
 });
 const { actions } = storeAPI;
 export const selectStore = (state: any) => state.stores;
-export const { pushStore, totalStore, deleStore } = actions;
+export const { pushStore, totalStore, deleStore, clearStore } = actions;
 export default storeAPI.reducer;

@@ -20,3 +20,10 @@ export interface UserSignUp {
   password: string | number;
   address: string | null;
 }
+
+export interface UserPay {
+  fullName: string;
+  phone: string | number;
+  gender: string;
+  address: string;
+}

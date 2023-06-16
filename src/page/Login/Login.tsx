@@ -9,9 +9,7 @@ export const Login: FC = () => {
   const [showSignIn, setShowSignIn] = useState<boolean>(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { ...payload } = useSelector(selectUser);
-  console.log("payload", payload.userInfo);
   const schema = Yup.object().shape({
     fullName: Yup.string()
       .required("Username is required")
@@ -147,7 +145,6 @@ export const Login: FC = () => {
           >
             <input
               value={formik.values.fullName}
-              // autoFocus
               type="text"
               name="fullName"
               placeholder={
@@ -164,7 +161,6 @@ export const Login: FC = () => {
             )}
             <input
               value={formik.values.password}
-              // autoFocus
               autoComplete="off"
               type="password"
               name="password"

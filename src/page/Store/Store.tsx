@@ -107,7 +107,11 @@ export const Store: FC = () => {
                     <td>
                       <button
                         onClick={() => {
-                          navigate("/pay");
+                          if (listStore && total !== 0) {
+                            navigate("/pay");
+                          } else {
+                            navigate("/menu");
+                          }
                         }}
                         className="text-red-800 font-bold text-2xl ml-10 bg-gradient-to-b from-indigo-300 to-purple-400 p-2 rounded-xl shadow-2xl hover:shadow-inset font-serif hover:bg-clip-text hover:bg-gradient-to-b from-indigo-500 to-purple-600 hover:text-transparent"
                       >
