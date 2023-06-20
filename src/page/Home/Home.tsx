@@ -76,7 +76,7 @@ export const Home: FC = () => {
 
   return (
     <Fragment>
-      <section id="about" className="relative text-white mb-5">
+      <section id="about" className="relative text-white mb-5 ">
         <img
           src={foodBG}
           alt="backgroundFood"

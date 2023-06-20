@@ -110,7 +110,7 @@ export const Pay: FC = () => {
             type="radio"
             value="Male"
           />
-          Nam <span className="inline-block mr-12"></span>
+          Male <span className="inline-block mr-12"></span>
           <input
             onChange={formik.getFieldProps("gender").onChange}
             checked={formik.values.gender === "Famale"}
@@ -118,7 +118,7 @@ export const Pay: FC = () => {
             type="radio"
             value="Famale"
           />
-          Nữ<span className="inline-block mr-12"></span>
+          Famale <span className="inline-block mr-12"></span>
           <input
             onChange={formik.getFieldProps("gender").onChange}
             checked={formik.values.gender === "Other"}
@@ -126,7 +126,7 @@ export const Pay: FC = () => {
             type="radio"
             value="Other"
           />
-          Khác<span className="inline-block mr-12"></span>
+          Other <span className="inline-block mr-12"></span>
         </div>
         <div className="w-[100%] mb-10">
           <table className="min-w-full text-left text-sm font-light relative">

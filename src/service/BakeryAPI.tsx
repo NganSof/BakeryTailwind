@@ -10,6 +10,7 @@ const bakeryAPI = createSlice({
     getBakery(state) {
       return state;
     },
+
     createBakery(state, action) {
       let indBaNew: number = current(state.listBake)?.findIndex(
         (item: infoBakey) => item.name === action.payload.name

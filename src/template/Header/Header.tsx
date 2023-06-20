@@ -1,11 +1,60 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import logo from "../../asset/logo.gif";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectBakery } from "../../service/BakeryAPI";
+import { infoBakey } from "../../type/Bakery";
 
 export const Header: FC = () => {
+  let { listBake } = useSelector(selectBakery);
+  const [first, setfirst] = useState<any>(" ");
+  const [valShow, setValShow] = useState<string>(" ");
+
   const navigate = useNavigate();
+  let listShow: string[] = [];
+  let listNameSearch: string[] = [];
+  let renderShowSearch: JSX.Element | JSX.Element[] = <p>{first}</p>;
+
+  listBake.forEach((valName: infoBakey) => {
+    listNameSearch.push(valName.name);
+  });
+
+  const render = () => {
+    setfirst(
+      listShow?.map((item: string, index: number) => {
+        return (
+          <p key={index}>
+            <Link
+              onClick={() => {
+                setfirst("");
+                setValShow("");
+              }}
+              to={"/menu"}
+              className="underline underline-offset-8 decoration-emerald-500 decoration-4 cursor-pointer hover:no-underline"
+            >
+              {item}
+            </Link>
+          </p>
+        );
+      })
+    );
+  };
+
+  const handleChange = (event: any) => {
+    let valSearch = event.target.value;
+    setValShow(event.target.value);
+    if (valSearch.trim() !== "") {
+      listShow = listNameSearch.filter((item) => {
+        return item.toLowerCase().includes(valSearch.toLowerCase());
+      });
+      render();
+    }
+    return listShow;
+  };
+
   return (
     <header className="@apply:bg:#F3F3F5 font-mono shadow-md flex h-24 justify-around items-center">
+      {/* fixed z-20 w-[100%]  */}
       <div
         onClick={() => navigate("")}
         id="logoHeader"
@@ -30,13 +79,18 @@ export const Header: FC = () => {
           </li>
         </ul>
         <input
+          value={valShow}
+          onChange={handleChange}
           type="search"
           autoFocus
           name=""
           placeholder="Search cake"
           id=""
-          className="border-2 pl-4 italic rounded-2xl shadow-xl hover:border-x-indigo-500 hover:border-y-purple-600 outline-none caret-transparent"
+          className="relative border-2 pl-4 italic rounded-2xl shadow-xl hover:border-x-indigo-500 hover:border-y-purple-600 outline-none caret-transparent"
         />
+      </div>
+      <div className="bg-red-500 absolute top-[11%] left-[49%] z-10 w-[20%] pl-2 bg-transparent">
+        {renderShowSearch}
       </div>
       <div
         id="loginHeader"
