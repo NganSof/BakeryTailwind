@@ -80,7 +80,6 @@ export const Pay: FC = () => {
           name="fullName"
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
-          // placeholder={infoUser.fullName ? infoUser.fullName : ""}
           className="lg:w-[30%] mr-40 mb-3 outline-none pl-5 sm:w-[60%]"
         />
         <input
