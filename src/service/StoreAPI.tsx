@@ -1,6 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { infoBakey } from "../type/Bakery";
-import { stat } from "fs/promises";
 
 let initialState = {
   listStore: [] as infoBakey[],
@@ -12,7 +11,6 @@ const storeAPI = createSlice({
   reducers: {
     pushStore(state, action) {
       let quan: number = 1;
-
       let indexBakery = [...state.listStore]?.findIndex((item) => {
         return item.name === action.payload.name;
       });

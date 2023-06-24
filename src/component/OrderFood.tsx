@@ -1,25 +1,42 @@
-import { FC, Fragment } from "react";
+import { FC } from "react";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { infoBakey } from "../type/Bakery";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { pushStore, totalStore } from "../service/StoreAPI";
 
-export const OrderFood: FC<infoBakey> = (props) => {
+export const OrderFood: FC<{ itemBakery: infoBakey }> = ({ itemBakery }) => {
+  const bakeryNew = { ...itemBakery };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleClick = (bakeryNew: infoBakey) => {
+    dispatch(pushStore(bakeryNew));
+    dispatch(totalStore());
+    navigate("/store");
+  };
+
   return (
-    <Fragment>
-      <div className="flex-row cursor-cell rounded-full p-5 flex justify-between items-center shadow-2xl mx-5 my-10 border-x-red-300 border-y-sky-500 border-4">
+    <div className="lg:w-[100%]">
+      <div className="rounded-full flex p-5justify-between items-center shadow-2xl mx-5 my-10 border-x-red-300 border-y-sky-500 border-4 lg:relative">
         <img
-          src="https://picsum.photos/id/237/200/300"
+          src={bakeryNew.picture}
           alt="orderPic"
-          className="w-32 h-32 rounded-full object-cover mr-1 shrink-0"
+          className="w-32 h-32 rounded-full mr-1 shrink-0 cursor-pointer"
         />
-        <div className="flex flex-col">
-          <p className="shrink-0">{props.name ? props.name : "Name Bakery"} </p>
-          <div className="flex flex-row justify-between items-center">
-            {/*  nếu price hơn 6 số cho 1 splite.... hiện title đủ số*/}
-            <p className="shrink-0 italic text-red-800">$100 </p>
-            <HiOutlineShoppingCart className="cursor-pointer" />
+        <div
+          id="contentNew"
+          className="flex flex-col flex-wrap md:absolute md:left-8 md:bg-blue-500 md:shadow-sm lg:bg-transparent lg:absolute lg:left-36 lg:top-10"
+        >
+          <p className="shrink-0">{bakeryNew.name}</p>
+          <div className="flex flex-row justify-around items-center flex-wrap  ">
+            <p className="shrink-0 italic text-red-800">$ {bakeryNew.price}</p>
+            <HiOutlineShoppingCart
+              className="cursor-pointer"
+              onClick={() => handleClick(bakeryNew)}
+            />
           </div>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };

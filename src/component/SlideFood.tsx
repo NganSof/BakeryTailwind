@@ -4,6 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slide.css";
 import { OrderFood } from "./OrderFood";
+import { bakeryNew } from "../mock/bakeryNew";
+import { infoBakey } from "../type/Bakery";
 
 export const SlideFood: FC = () => {
   const settings = {
@@ -19,56 +21,16 @@ export const SlideFood: FC = () => {
   return (
     <div className="w-[100%]">
       <Slider {...settings}>
-        <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
-          <OrderFood
-            type={"pizza"}
-            name="bakery 1"
-            description="lorem10"
-            quantity={12}
-            price={25000}
-            quanChoice={0}
-          />
-        </div>
-        <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
-          <OrderFood
-            type={"burger"}
-            name="bakery 2"
-            description="lorem10"
-            quantity={12}
-            price={25000}
-            quanChoice={0}
-          />
-        </div>
-        <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
-          <OrderFood
-            type={"sandwich"}
-            name="bakery 3"
-            description="lorem10"
-            quantity={12}
-            price={25000}
-            quanChoice={0}
-          />
-        </div>
-        <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
-          <OrderFood
-            type={"pizza"}
-            name="bakery 4"
-            description="lorem10"
-            quantity={12}
-            price={25000}
-            quanChoice={0}
-          />
-        </div>
-        <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
-          <OrderFood
-            type={"pizza"}
-            name="bakery 5"
-            description="lorem10"
-            quantity={12}
-            price={25000}
-            quanChoice={0}
-          />
-        </div>
+        {bakeryNew.map((item: infoBakey) => {
+          return (
+            <div
+              // key={item.name}
+              className="border-none outline-none hover:-translate-y-6 hover:transition-all"
+            >
+              <OrderFood itemBakery={item} />
+            </div>
+          );
+        })}
       </Slider>
     </div>
   );

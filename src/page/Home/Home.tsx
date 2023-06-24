@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import {
   HiBeaker,
   HiBell,
@@ -15,6 +15,7 @@ import { SlideFood } from "../../component/SlideFood";
 import { infoBakey } from "../../type/Bakery";
 import { createBakery, selectBakery } from "../../service/BakeryAPI";
 import { useDispatch, useSelector } from "react-redux";
+import Food10 from "../../asset/Food10.png";
 
 export const Home: FC = () => {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ export const Home: FC = () => {
       createBakery({
         type: "pizza",
         name: "Hot Pizza",
+        picture: Food10,
         price: 520000,
         quantity: 7,
         description:
@@ -75,14 +77,14 @@ export const Home: FC = () => {
   handleShow(idChange);
 
   return (
-    <Fragment>
-      <section id="about" className="relative text-white mb-5 ">
+    <div className="pt-[6.25rem]">
+      <section id="about" className="relative text-white mb-5">
         <img
           src={foodBG}
           alt="backgroundFood"
           className="rounded-full p-5 ml-20 rounded-tl-[80px] rounded-tr-[160px] rounded-br-[80px] rounded-bl-[160px]"
         />
-        <div className="absolute top-14 left-52">
+        <div className="absolute top-14 left-32">
           <h1 className="font-serif text-3xl w-64">
             It’s not just a Food Its a Expirence!
           </h1>
@@ -92,7 +94,7 @@ export const Home: FC = () => {
             fuga et ut cum!
           </p>
         </div>
-        <div className="text-black absolute top-32 right-52 w-64 flex justify-around items-center py-2 rounded-lg">
+        <div className="text-black absolute top-32 right-72 w-64 flex justify-around items-center py-2 rounded-lg">
           <button className="flex flex-row items-center bg-slate-100 border-2 border-double border-orange-500 p-2 rounded-xl shadow-2xl hover:shadow-inset">
             <HiOutlineMap className="shrink-0 mr-2" />
             <p className="flex-1 font-serif" onClick={handlScrOrder}>
@@ -123,7 +125,7 @@ export const Home: FC = () => {
             onClick={() => {
               setIdChange("cakes");
             }}
-            className="flex justify-between items-center decoration-wavy decoration-orange-500 underline hover:text-orange-500 hover:no-underline hover:cursor-pointer"
+            className="flex justify-between items-center shadow-2xl border-4 border-l-red-800 px-2 bg-gradient-to-r from-violet-200 to-fuchsia-300 rounded-lg outline-none hover:text-orange-500 hover:no-underline hover:cursor-pointer hover:border-none"
           >
             <HiBell />
             <p className="ml-2">Cakes & Pastries</p>
@@ -132,7 +134,7 @@ export const Home: FC = () => {
             onClick={() => {
               setIdChange("sandwich");
             }}
-            className="flex justify-between items-center decoration-wavy decoration-orange-500 underline hover:text-orange-500 hover:no-underline hover:cursor-pointer"
+            className="flex justify-between items-center shadow-2xl border-4 border-l-red-800 px-2 bg-gradient-to-r from-violet-200 to-fuchsia-300 rounded-lg hover:text-orange-500 hover:no-underline hover:cursor-pointer hover:border-none"
           >
             <HiBeaker />
             <p className="ml-2">Sandwich</p>
@@ -141,7 +143,7 @@ export const Home: FC = () => {
             onClick={() => {
               setIdChange("burger");
             }}
-            className="flex justify-between items-center decoration-wavy decoration-orange-500 underline hover:text-orange-500 hover:no-underline hover:cursor-pointer"
+            className="flex justify-between items-center shadow-2xl border-4 border-l-red-800 px-2 bg-gradient-to-r from-violet-200 to-fuchsia-300 rounded-lg hover:text-orange-500 hover:no-underline hover:cursor-pointer hover:border-none"
           >
             <HiHeart />
             <p className="ml-2">Burger</p>
@@ -150,7 +152,7 @@ export const Home: FC = () => {
             onClick={() => {
               setIdChange("pizza");
             }}
-            className="flex justify-between items-center decoration-wavy decoration-orange-500 underline hover:text-orange-500 hover:no-underline hover:cursor-pointer"
+            className="flex justify-between items-center shadow-2xl border-4 border-l-red-800 px-2 bg-gradient-to-r from-violet-200 to-fuchsia-300 rounded-lg hover:text-orange-500 hover:no-underline hover:cursor-pointer hover:border-none"
           >
             <HiSparkles />
             <p className="ml-2">Pizza</p>
@@ -194,6 +196,6 @@ export const Home: FC = () => {
           </li>
         </ul>
       </section>
-    </Fragment>
+    </div>
   );
 };

@@ -59,8 +59,8 @@ export const Login: FC = () => {
   };
 
   return (
-    <div className="my-32">
-      <div className="flex flex-col m-auto max-w-5xl">
+    <div className="pt-[6.25rem]">
+      <div className="flex flex-col m-auto max-w-5xl my-32">
         {!showSignIn ? (
           <form className="flex bg-transparent flex-col w-80 text-center m-auto my-14">
             <input
@@ -77,9 +77,9 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2 mb-5"
             />
-            {formik.errors.fullName && (
-              <div className="text-red-800">{formik.errors.fullName}</div>
-            )}
+            {/* {formik.errors.fullName && (
+              // <div className="text-red-800">{formik.errors.fullName}</div>
+            )} */}
             <input
               value={formik.values.email}
               autoFocus
@@ -90,7 +90,7 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2 mb-5"
             />
-            <div className="text-red-800">{formik.errors.email}</div>
+            {/* <div className="text-red-800">{formik.errors.email}</div> */}
             <input
               value={formik.values.phone}
               autoFocus
@@ -101,7 +101,7 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2 mb-5"
             />
-            <div className="text-red-800">{formik.errors.phone}</div>
+            {/* <div className="text-red-800">{formik.errors.phone}</div> */}
             <input
               value={formik.values.address}
               autoFocus
@@ -112,7 +112,7 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2 mb-5"
             />
-            <div className="text-red-800">{formik.errors.address}</div>
+            {/* <div className="text-red-800">{formik.errors.address}</div> */}
             <input
               value={
                 payload.userInfo
@@ -128,7 +128,7 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2"
             />
-            <div className="text-red-800">{formik.errors.password}</div>
+            {/* <div className="text-red-800">{formik.errors.password}</div> */}
             <div className=" m-auto my-6">
               <button
                 type="submit"
@@ -156,9 +156,9 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2 mb-5"
             />
-            {formik.errors.fullName && formik.touched.fullName && (
-              <div className="text-red-800">{formik.errors.fullName}</div>
-            )}
+            {/* {formik.errors.fullName && formik.touched.fullName && (
+              // <div className="text-red-800">{formik.errors.fullName}</div>
+            )} */}
             <input
               value={formik.values.password}
               autoComplete="off"
@@ -173,9 +173,9 @@ export const Login: FC = () => {
               onChange={formik.handleChange}
               className="outline-none border-t-indigo-600 border-b-indigo-600 border-r-purple-600 rounded-xl border-l-purple-600 border-[3px] py-1 pl-2"
             />
-            {formik.errors.password && formik.touched.password && (
-              <div className="text-red-800">{formik.errors.password}</div>
-            )}
+            {/* {formik.errors.password && formik.touched.password && (
+              // <div className="text-red-800">{formik.errors.password}</div>
+            )} */}
             <div className=" m-auto my-6">
               <button
                 onClick={handleSubmit}

@@ -11,10 +11,10 @@ export const CardFood: FC<{ food: infoBakey[] }> = ({ food }) => {
             className="w-48 bg-white rounded-3xl shadow-xl shadow-gray-400 relative my-24 mx-3"
           >
             <img
-              src={`https://i.pravatar.cc/200?u=${itemFood.name}`}
+              src={itemFood.picture}
               alt="PicFood"
               className="shrink-0
-  object-contain w-[50%] absolute -top-[100px] left-12 border-2 bg-slate-50 shadow-neutral-300 shadow-inset rounded-full border-solid border-red-600"
+  object-cover w-[50%] h-[30%] absolute -top-[100px] left-12 border-2 bg-slate-50 shadow-neutral-300 shadow-inset rounded-full border-solid border-red-600"
             />
             <div className="flexn flex-1 flex-col justify-start items-center py-8 overflow-hidden ">
               <h2 className="shrink-0 ml-5 text-start text-orange-600 font-mono font-bold tracking-wider text-xl">

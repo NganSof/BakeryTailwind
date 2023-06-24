@@ -62,7 +62,7 @@ export const Menu: FC = () => {
   };
 
   return (
-    <div className="flex flex-row justify-between">
+    <div className="flex flex-row justify-between pt-[6.25rem]">
       <ul className="flex list-none flex-col flex-wrap w-[20%] justify-evenly text-xl italic font-bold">
         <li
           className="p-2 flex text-center hover:shadow-lg hover:shadow-orange-700 w-[100%] decoration-wavy decoration-orange-500 underline cursor-pointer"

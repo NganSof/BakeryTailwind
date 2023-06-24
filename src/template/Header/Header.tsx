@@ -1,14 +1,29 @@
-import { FC, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import logo from "../../asset/logo.gif";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectBakery } from "../../service/BakeryAPI";
 import { infoBakey } from "../../type/Bakery";
+import { selectStore } from "../../service/StoreAPI";
 
 export const Header: FC = () => {
   let { listBake } = useSelector(selectBakery);
-  const [first, setfirst] = useState<any>(" ");
-  const [valShow, setValShow] = useState<string>(" ");
+  let { listStore, total } = useSelector(selectStore);
+  const [first, setfirst] = useState<any>("");
+  const [valShow, setValShow] = useState<string>("");
+  const [numChoi, setNumChoi] = useState<number>(0);
+  let num: number = 0;
+
+  useMemo(() => {
+    if (total === 0) {
+      setNumChoi(0);
+    } else {
+      listStore.forEach((item: infoBakey) => {
+        num = num + item.quanChoice;
+        setNumChoi(num);
+      });
+    }
+  }, [listStore]);
 
   const navigate = useNavigate();
   let listShow: string[] = [];
@@ -53,8 +68,7 @@ export const Header: FC = () => {
   };
 
   return (
-    <header className="@apply:bg:#F3F3F5 font-mono shadow-md flex h-24 justify-around items-center">
-      {/* fixed z-20 w-[100%]  */}
+    <header className="@apply:bg:#F3F3F5 fixed z-20 w-[100%] font-mono shadow-md flex h-24 justify-around items-center bg-gradient-to-r from-violet-100 to-fuchsia-200 bg-opacity-25">
       <div
         onClick={() => navigate("")}
         id="logoHeader"
@@ -86,7 +100,7 @@ export const Header: FC = () => {
           name=""
           placeholder="Search cake"
           id=""
-          className="relative border-2 pl-4 italic rounded-2xl shadow-xl hover:border-x-indigo-500 hover:border-y-purple-600 outline-none caret-transparent"
+          className="relative outline-none border-2 pl-4 italic rounded-2xl shadow-xl hover:border-x-indigo-500 hover:border-y-purple-600 outline-none caret-transparent"
         />
       </div>
       <div className="bg-red-500 absolute top-[11%] left-[49%] z-10 w-[20%] pl-2 bg-transparent">
@@ -98,8 +112,11 @@ export const Header: FC = () => {
       >
         <button
           onClick={() => navigate("/store")}
-          className="rounded-full shadow-xl p-2 mr-5 bg-slate-5 hover:shadow-slate-400 hover:shadow-inner"
+          className="rounded-full relative shadow-xl p-2 mr-5 bg-slate-5 hover:shadow-slate-400 hover:shadow-inner"
         >
+          <p className="absolute -top-3 left-7 text-red-800 font-bold text-xl">
+            {numChoi}
+          </p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

@@ -11,7 +11,6 @@ export const Pay: FC = () => {
   const dispatch = useDispatch();
   const [hidden, setHidden] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
-
   const { listStore, total } = useSelector(selectStore);
   const infoUser = JSON.parse(localStorage.getItem("userLogin") || "{}");
   const formik = useFormik({
@@ -33,11 +32,9 @@ export const Pay: FC = () => {
     if (result === false) {
     } else {
       setHidden(true);
-
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
-
         dispatch(clearStore());
       }, 10000);
       setTimeout(() => {
@@ -63,8 +60,8 @@ export const Pay: FC = () => {
     <div
       className={
         hidden
-          ? "relative bg-gradient-to-b from-indigo-300 to-purple-400 p-5"
-          : "z-0 relative bg-gradient-to-b from-indigo-300 to-purple-400 p-5"
+          ? "relative bg-gradient-to-b from-indigo-300 to-purple-400 p-5 pt-[6.25rem]"
+          : "z-0 relative bg-gradient-to-b from-indigo-300 to-purple-400 p-5 pt-[6.25rem]"
       }
     >
       <form
@@ -76,13 +73,15 @@ export const Pay: FC = () => {
         }
       >
         <input
-          value={formik.values.fullName}
+          value={
+            formik.values.fullName ? formik.values.fullName : infoUser.fullName
+          }
           type="text"
           name="fullName"
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
-          placeholder={infoUser.fullName ? infoUser.fullName : ""}
-          className="w-[30%] mr-40 mb-3"
+          // placeholder={infoUser.fullName ? infoUser.fullName : ""}
+          className="lg:w-[30%] mr-40 mb-3 outline-none pl-5 sm:w-[60%]"
         />
         <input
           value={formik.values.phone}
@@ -91,7 +90,7 @@ export const Pay: FC = () => {
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           placeholder="Phone connect"
-          className="w-[30%] mr-[90px] mb-3"
+          className="lg:w-[30%] mr-[90px] mb-3 outline-none pl-5 sm:w-[60%]"
         />
         <input
           value={formik.values.address}
@@ -100,9 +99,9 @@ export const Pay: FC = () => {
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           placeholder="Address"
-          className="w-[30%] mr-40 mb-3"
+          className="lg:w-[30%] mr-40 mb-3 outline-none pl-5 sm:w-[60%]"
         />
-        <div className="w-[40%] mb-4 mr-[100px]">
+        <div className="lg:w-[40%] mb-4 mr-[100px] sm:w-[60%]">
           <input
             onChange={formik.getFieldProps("gender").onChange}
             checked={formik.values.gender === "Male"}
