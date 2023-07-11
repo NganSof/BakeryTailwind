@@ -68,7 +68,7 @@ export const Header: FC = () => {
   };
 
   return (
-    <header className="@apply:bg:#F3F3F5 fixed z-20 w-[100%] font-mono shadow-md flex h-24 justify-around items-center bg-gradient-to-r from-violet-100 to-fuchsia-200 bg-opacity-25">
+    <header className="@apply:bg:#F3F3F5 fixed z-40 w-[100%] font-mono shadow-md flex h-24 justify-around items-center bg-gradient-to-r from-violet-100 to-fuchsia-200 bg-opacity-25">
       <div
         onClick={() => navigate("")}
         id="logoHeader"

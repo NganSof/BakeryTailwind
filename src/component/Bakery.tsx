@@ -48,7 +48,7 @@ export const Bakery: FC<{ bakery: infoBakey }> = ({ bakery }) => {
         <img
           src={bakery.picture}
           alt="picBakery"
-          className="object-cover w-[100%] h-36"
+          className="object-fill w-[auto] h-36 "
         />
         <div id="bakeryRate" className="flex justify-around items-center">
           <div>

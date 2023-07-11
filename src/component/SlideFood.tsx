@@ -23,10 +23,7 @@ export const SlideFood: FC = () => {
       <Slider {...settings}>
         {bakeryNew.map((item: infoBakey) => {
           return (
-            <div
-              // key={item.name}
-              className="border-none outline-none hover:-translate-y-6 hover:transition-all"
-            >
+            <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
               <OrderFood itemBakery={item} />
             </div>
           );

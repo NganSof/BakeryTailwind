@@ -25,10 +25,10 @@ export const OrderFood: FC<{ itemBakery: infoBakey }> = ({ itemBakery }) => {
         />
         <div
           id="contentNew"
-          className="flex flex-col flex-wrap md:absolute md:left-8 md:bg-blue-500 md:shadow-sm lg:bg-transparent lg:absolute lg:left-36 lg:top-10"
+          className="flex flex-col overflow-hidden flex-wrap sm:absolute sm:z-30 sm:my-0 sm:mx-6 sm:bg-[burlywood] sm:bg-opacity-60 md:absolute md:bg-blue-500 md:shadow-sm lg:bg-transparent lg:absolute lg:left-36 lg:top-10"
         >
-          <p className="shrink-0">{bakeryNew.name}</p>
-          <div className="flex flex-row justify-around items-center flex-wrap  ">
+          <p className="shrink-0 flex flex-wrap w-[110px]">{bakeryNew.name}</p>
+          <div className="flex flex-row justify-around items-center flex-wrap">
             <p className="shrink-0 italic text-red-800">$ {bakeryNew.price}</p>
             <HiOutlineShoppingCart
               className="cursor-pointer"

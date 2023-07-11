@@ -1,11 +1,16 @@
 import { infoBakey } from "../type/Bakery";
 import Food2 from "../asset/Food2.png";
 import Food3 from "../asset/Food3.png";
+import Food8 from "../asset/Food8.png";
+import Food9 from "../asset/Food9.png";
+import Food10 from "../asset/Food10.png";
 import Food11 from "../asset/Food11.png";
 import Food12 from "../asset/Food12.png";
+import Food13 from "../asset/Food13.png";
 import Food14 from "../asset/Food14.png";
 import Food15 from "../asset/Food15.png";
 import Food16 from "../asset/Food16.png";
+import Food17 from "../asset/Food17.png";
 import Food18 from "../asset/Food18.png";
 import Food19 from "../asset/Food19.png";
 
@@ -33,11 +38,44 @@ export let bakeryTypeDate: infoBakey[] = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore tenetur, corrupti a mollitia consequatur voluptatibus excepturi recusandae. Hic nemo impedit sequi iusto distinctio blanditiis minus, nulla eius dolorem, dolorum repellendus amet fuga eaque illo laudantium temporibus nostrum porro deserunt ducimus quidem quos omnis possimus id aperiam? Ipsa, dolorum impedit totam sed illo autem quidem voluptatibus esse at deserunt harum illum?",
   },
   {
+    type: "cakes",
+    name: "Choco Cake",
+    picture: Food9,
+    price: 9000,
+    quantity: 8,
+    quanChoice: 0,
+    sum: 0,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore tenetur, corrupti a mollitia consequatur voluptatibus excepturi recusandae. Hic nemo impedit sequi iusto distinctio blanditiis minus, nulla eius dolorem, dolorum repellendus amet fuga eaque illo laudantium temporibus nostrum porro deserunt ducimus quidem quos omnis possimus id aperiam? Ipsa, dolorum impedit totam sed illo autem quidem voluptatibus esse at deserunt harum illum?",
+  },
+  {
+    type: "cakes",
+    name: "Deli Cake",
+    picture: Food8,
+    price: 15000,
+    quantity: 9,
+    quanChoice: 0,
+    sum: 0,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore tenetur, corrupti a mollitia consequatur voluptatibus excepturi recusandae. Hic nemo impedit sequi iusto distinctio blanditiis minus, nulla eius dolorem, dolorum repellendus amet fuga eaque illo laudantium temporibus nostrum porro deserunt ducimus quidem quos omnis possimus id aperiam? Ipsa, dolorum impedit totam sed illo autem quidem voluptatibus esse at deserunt harum illum?",
+  },
+  {
     type: "pizza",
     name: "Summer Pizza",
     picture: Food11,
     price: 240000,
     quantity: 12,
+    quanChoice: 0,
+    sum: 0,
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident totam nisi aspernatur, fugit rem cupiditate porro dolor id voluptates obcaecati distinctio debitis! Similique, iste sed, sit atque ad quia aut officiis consequuntur possimus accusamus nisi consectetur? Esse voluptatum quod nihil sapiente dignissimos adipisci, quis consequatur ea fuga corporis rerum sed incidunt, mollitia facere aliquid autem pariatur aliquam aut alias laboriosam.",
+  },
+  {
+    type: "pizza",
+    name: "Meat Pizza",
+    picture: Food10,
+    price: 290000,
+    quantity: 35,
     quanChoice: 0,
     sum: 0,
     description:
@@ -60,6 +98,17 @@ export let bakeryTypeDate: infoBakey[] = [
     picture: Food15,
     price: 55000,
     quantity: 25,
+    quanChoice: 0,
+    sum: 0,
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam accusamus dolore quasi incidunt inventore quos quibusdam officia distinctio eligendi natus architecto at provident eveniet, ea recusandae autem ut consequatur veritatis rem officiis quidem culpa alias illum? Doloribus porro molestiae rerum repudiandae ad itaque dignissimos, fuga sequi. Eos voluptates quam amet voluptatibus suscipit. Est magni fugiat earum corporis molestias ipsam odit!",
+  },
+  {
+    type: "burger",
+    name: "Shrimp Burger",
+    picture: Food13,
+    price: 65000,
+    quantity: 5,
     quanChoice: 0,
     sum: 0,
     description:
@@ -93,6 +142,17 @@ export let bakeryTypeDate: infoBakey[] = [
     picture: Food18,
     price: 30000,
     quantity: 3,
+    quanChoice: 0,
+    sum: 0,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore tenetur, corrupti a mollitia consequatur voluptatibus excepturi recusandae. Hic nemo impedit sequi iusto distinctio blanditiis minus, nulla eius dolorem, dolorum repellendus amet fuga eaque illo laudantium temporibus nostrum porro deserunt ducimus quidem quos omnis possimus id aperiam? Ipsa, dolorum impedit totam sed illo autem quidem voluptatibus esse at deserunt harum illum?",
+  },
+  {
+    type: "sandwich",
+    name: "Smile Sandwich",
+    picture: Food17,
+    price: 39000,
+    quantity: 10,
     quanChoice: 0,
     sum: 0,
     description:

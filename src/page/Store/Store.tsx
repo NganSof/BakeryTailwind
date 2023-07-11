@@ -37,6 +37,18 @@ export const Store: FC = () => {
           <td className="whitespace-nowrap px-6 py-4">{itemStore.price}</td>
           <td className="whitespace-nowrap px-6 py-4">
             <button
+              className="border-2 bg-blue-700 text-white text-bold text-xl rounded-lg w-6 h-9 inline-block my-0 mx-auto pb-9 pt-1 cursor-pointer"
+              onClick={() => {
+                dispatch(deleStore(itemStore));
+                dispatch(totalStore());
+              }}
+            >
+              -
+            </button>
+            <span className="inline mx-2 font-serif">
+              {itemStore.quanChoice}
+            </span>
+            <button
               className={
                 itemStore.quantity === 0
                   ? "border-2 bg-red-500 my-0 mx-auto pb-9 pt-1 text-xl rounded-lg w-6 h-9 cursor-not-allowed"
@@ -48,18 +60,6 @@ export const Store: FC = () => {
               }}
             >
               +
-            </button>
-            <span className="inline mx-2 font-serif">
-              {itemStore.quanChoice}
-            </span>
-            <button
-              className="border-2 bg-blue-700 text-white text-bold text-xl rounded-lg w-6 h-9 inline-block my-0 mx-auto pb-9 pt-1 cursor-pointer"
-              onClick={() => {
-                dispatch(deleStore(itemStore));
-                dispatch(totalStore());
-              }}
-            >
-              -
             </button>
           </td>
           <td className="whitespace-nowrap px-6 py-4 text-red-600 font-serif">
