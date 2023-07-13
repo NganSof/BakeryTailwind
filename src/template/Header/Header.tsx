@@ -68,7 +68,7 @@ export const Header: FC = () => {
   };
 
   return (
-    <header className="@apply:bg:#F3F3F5 fixed z-40 w-[100%] font-mono shadow-md flex h-24 justify-around items-center bg-gradient-to-r from-violet-100 to-fuchsia-200 bg-opacity-25">
+    <header className="@apply:bg:#F3F3F5 fixed z-40 md:w-[100%] font-mono shadow-md flex md:h-24 justify-around items-center bg-gradient-to-r from-violet-100 to-fuchsia-200 bg-opacity-25 sm:flex-wrap sm:w-[701px] sm:pb-[20px]">
       <div
         onClick={() => navigate("")}
         id="logoHeader"
@@ -100,10 +100,10 @@ export const Header: FC = () => {
           name=""
           placeholder="Search cake"
           id=""
-          className="relative outline-none border-2 pl-4 italic rounded-2xl shadow-xl hover:border-x-indigo-500 hover:border-y-purple-600 outline-none caret-transparent"
+          className="relative outline-none border-2 pl-4 italic rounded-2xl shadow-xl hover:border-x-indigo-500 hover:border-y-purple-600 caret-transparent"
         />
       </div>
-      <div className="bg-red-500 absolute top-[11%] left-[49%] z-10 w-[20%] pl-2 bg-transparent">
+      <div className="bg-transparent absolute top-[62%] z-40 left-[49%] w-[20%] pl-2 mb-28 shadow-lg">
         {renderShowSearch}
       </div>
       <div

@@ -100,7 +100,7 @@ export const Pay: FC = () => {
           placeholder="Address"
           className="lg:w-[30%] mr-40 mb-3 outline-none pl-5 sm:w-[60%]"
         />
-        <div className="lg:w-[40%] mb-4 mr-[100px] sm:w-[60%]">
+        <div className="lg:w-[40%] mb-4 mr-[100px] sm:w-[56%]">
           <input
             onChange={formik.getFieldProps("gender").onChange}
             checked={formik.values.gender === "Male"}

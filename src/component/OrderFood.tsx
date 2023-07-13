@@ -17,7 +17,7 @@ export const OrderFood: FC<{ itemBakery: infoBakey }> = ({ itemBakery }) => {
 
   return (
     <div className="lg:w-[100%]">
-      <div className="rounded-full flex p-5justify-between items-center shadow-2xl mx-5 my-10 border-x-red-300 border-y-sky-500 border-4 lg:relative">
+      <div className="rounded-full flex p-5justify-between items-center shadow-2xl mx-5 my-10 border-x-red-300 border-y-sky-500 border-4 lg:relative sm:w-[66%] md:w-[90%]">
         <img
           src={bakeryNew.picture}
           alt="orderPic"

@@ -78,13 +78,16 @@ export const Home: FC = () => {
 
   return (
     <div className="pt-[6.25rem]">
-      <section id="about" className="relative text-white mb-5">
+      <section
+        id="about"
+        className="relative text-white mb-5 sm:flex sm:justify-start sm:flex-wrap sm:mb-24"
+      >
         <img
           src={foodBG}
           alt="backgroundFood"
-          className="rounded-full p-5 ml-20 rounded-tl-[80px] rounded-tr-[160px] rounded-br-[80px] rounded-bl-[160px]"
+          className="rounded-full p-5 sm:ml-0 md:ml-20 rounded-tl-[80px] rounded-tr-[160px] rounded-br-[80px] rounded-bl-[160px]"
         />
-        <div className="absolute top-14 left-32">
+        <div className="absolute md:top-14 md:left-32 sm:left-[3rem] sm:top-[4rem]">
           <h1 className="font-serif text-3xl w-64">
             It’s not just a Food Its a Expirence!
           </h1>
@@ -94,7 +97,7 @@ export const Home: FC = () => {
             fuga et ut cum!
           </p>
         </div>
-        <div className="text-black absolute top-32 right-72 w-64 flex justify-around items-center py-2 rounded-lg">
+        <div className="sm:top-[22rem] sm:right-[7.7rem] text-black absolute md:top-32 md:right-72 w-64 flex justify-around items-center py-2 rounded-lg">
           <button className="flex flex-row items-center bg-slate-100 border-2 border-double border-orange-500 p-2 rounded-xl shadow-2xl hover:shadow-inset">
             <HiOutlineMap className="shrink-0 mr-2" />
             <p className="flex-1 font-serif" onClick={handlScrOrder}>
@@ -120,7 +123,7 @@ export const Home: FC = () => {
         <h2 className="my-2 text-orange-600 font-bold tracking-widest">
           Eat Fresh & Healthy
         </h2>
-        <div className="flex flex-row mx-10 justify-evenly my-4 shadow-inset p-3 rounded-md">
+        <div className="md:flex flex-row mx-10 md:justify-evenly my-4 shadow-inset p-3 rounded-md overflow-hidden sm:text-md sm:list-item">
           <div
             onClick={() => {
               setIdChange("cakes");
@@ -178,10 +181,10 @@ export const Home: FC = () => {
         ref={scrAbout}
         className="text-center bg-no-repeat bg-cover bg-gift-img h-96 max-w-7xl mx-20 my-12 relative"
       >
-        <h2 className="font-bold italic font-serif bg-clip-text bg-gradient-to-b from-indigo-500 to-purple-600 text-transparent text-4xl my-3 animate-bounce absolute top-64 left-40">
+        <h2 className="font-bold italic font-serif bg-clip-text bg-gradient-to-b from-indigo-500 to-purple-600 text-transparent md:text-4xl my-3 animate-bounce absolute md:top-64 md:left-40 sm:top-64 sm:left-10 sm:text-2xl">
           Lucky coupons
         </h2>
-        <ul className="ml-72 mt-5 text-left text-red-800 absolute top-10 -left-8">
+        <ul className="ml-72 md:mt-5 text-left text-red-800 absolute top-10 -left-8 sm:mt-0">
           <li className="italic font-mono tracking-wider cursor-pointer pb-2 hover:text-red-700 hover:text-xl">
             Lucky coupons by month
           </li>

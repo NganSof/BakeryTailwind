@@ -80,8 +80,8 @@ export const Store: FC = () => {
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
             <div className="overflow-hidden">
-              <table className="min-w-full text-left text-sm font-light">
-                <thead className="border-b font-mono dark:border-neutral-500">
+              <table className="min-w-full text-left text-sm font-light ">
+                <thead className="border-b font-mono dark:border-neutral-500 overflow-hidden">
                   <tr>
                     <th scope="col" className="px-6 py-4">
                       ID
@@ -99,8 +99,8 @@ export const Store: FC = () => {
                   </tr>
                 </thead>
                 <tbody className="relative">{renderItemStore()}</tbody>
-                <tfoot className="h-10">
-                  <tr className="text-right absolute top-auto left-[250px] mt-6">
+                <tfoot className="md:h-10 sm:h-[100vh]">
+                  <tr className="text-right absolute md:top-auto md:left-[250px] sm:left-28 mt-6">
                     <td className="text-red-800 font-bold text-2xl">
                       Total : $ {valMoney(total)}
                     </td>

@@ -16,6 +16,15 @@ export const SlideFood: FC = () => {
     speed: 2000,
     autoplaySpeed: 2000,
     cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -23,7 +32,10 @@ export const SlideFood: FC = () => {
       <Slider {...settings}>
         {bakeryNew.map((item: infoBakey) => {
           return (
-            <div className="border-none outline-none hover:-translate-y-6 hover:transition-all">
+            <div
+              key={item.name}
+              className="border-none outline-none hover:-translate-y-6 hover:transition-all"
+            >
               <OrderFood itemBakery={item} />
             </div>
           );
